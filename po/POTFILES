@@ -1,0 +1,9 @@
+data/org.gnome.Contador.desktop.in
+data/org.gnome.Contador.appdata.xml.in
+data/org.gnome.Contador.gschema.xml
+src/window.ui
+
+
+
+src/main.py
+src/window.py
