@@ -18,16 +18,20 @@
 from gi.repository import Gtk
 from .gi_composites import GtkTemplate
 
+
 @GtkTemplate(ui='/org/gnome/Contador/window.ui')
 class ContadorWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'ContadorWindow'
 
-
-    counter_label = GtkTemplate.Child()
+    counter_label, \
+    title_stack, \
+    title_entry, \
+    title_label = GtkTemplate.Child.widgets(4)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.init_template()
+
 
     def count_value(self):
         count = int(self.counter_label.get_text())
@@ -42,16 +46,14 @@ class ContadorWindow(Gtk.ApplicationWindow):
             value = 0
         self.counter_label.set_text(str(value))
 
+    @GtkTemplate.Callback
+    def on_title_label_focus(self, widget, event):
+        self.title_stack.set_visible_child(self.title_entry)
+        self.title_entry.grab_focus()
 
-
-
-
-
-
-
-
-
-
-
-
-
+    @GtkTemplate.Callback
+    def on_title_entry_focus_out(self, widget):
+        print("tada")
+        text = self.title_entry.get_text()
+        self.title_label.set_text(text)
+        self.title_stack.set_visible_child(self.title_label)

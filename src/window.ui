@@ -22,8 +22,42 @@
       <object class="GtkHeaderBar" id="header_bar">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="title">Counter</property>
         <property name="show_close_button">True</property>
+        <child type="title">
+          <object class="GtkStack" id="title_stack">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="title_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Gounter</property>
+                <property name="selectable">True</property>
+                <signal name="focus-in-event" handler="on_title_label_focus" swapped="no"/>
+              </object>
+              <packing>
+                <property name="name">page0</property>
+                <property name="title" translatable="yes">page0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="title_entry">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hexpand">False</property>
+                <property name="text" translatable="yes">Gounter</property>
+                <property name="xalign">0.5</property>
+                <property name="caps_lock_warning">False</property>
+                <signal name="activate" handler="on_title_entry_focus_out" swapped="no"/>
+              </object>
+              <packing>
+                <property name="name">page1</property>
+                <property name="title" translatable="yes">page1</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>
